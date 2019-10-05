@@ -783,7 +783,15 @@ function bnpFromNumber(a, b) {
         }
     } else {
         // new BigInteger(int,RNG)
-        var x = crypt.randomBytes((a >> 3) + 1)
+        //var x = crypt.randomBytes((a >> 3) + 1)
+		
+		//
+		var x = Buffer.alloc((a >> 3) + 1)
+		for( let i = 0; i < (a >> 3) + 1; i++ )
+		{
+			x[i] = Math.floor(Math.random()*256 % 256)
+		}
+	
         var t = a & 7;
 
         if (t > 0)
